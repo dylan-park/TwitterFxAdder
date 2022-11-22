@@ -41,8 +41,7 @@ public class Main {
 
     public static void processClipboard(Clipboard clipboard) throws IOException, UnsupportedFlavorException {
         String input = clipboard.getData(DataFlavor.stringFlavor).toString();
-        System.out.println(Pattern.compile("http(?:s)?:\\/\\/(?:www)?twitter\\.com\\/([a-zA-Z0-9_]+)\\/status\\/([a-zA-Z0-9_]+)(\\/.*)?").matcher(input).matches());
-        if (Pattern.compile("http(?:s)?:\\/\\/(?:www)?twitter\\.com\\/([a-zA-Z0-9_]+)\\/status\\/([a-zA-Z0-9_]+)(\\/.*)?").matcher(input).matches()) {
+        if (Pattern.compile("http(?:s)?:\\/\\/(?:www)?twitter\\.com\\/([a-zA-Z0-9_]+)\\/status(\\/.*)?").matcher(input).matches()) {
             StringSelection selection = new StringSelection(input.substring(0, input.indexOf("//") + 2) + "fx" + input.substring(input.indexOf("twitter")));
             clipboard.setContents(selection, selection);
         }
